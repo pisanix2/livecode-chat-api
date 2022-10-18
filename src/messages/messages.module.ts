@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
+import { SocketService } from './domain/ports/socket.service';
 
 import { MessageController } from './adapters/api/message.controller';
 import { MessageRepository } from './domain/ports/message.repository';
 import { MessageInMemory } from './adapters/db/messageInMemory.repository';
-import MessageService from './domain/ports/message.service';
+import { MessageService } from './domain/ports/message.service';
 
 import { ContactController } from './adapters/api/contact.controller';
 import { ContactRepository } from './domain/ports/contact.repository';
@@ -14,6 +15,7 @@ import { ContactService } from './domain/ports/contact.service';
   controllers: [MessageController, ContactController],
 
   providers: [
+    SocketService,
     MessageService,
     {
       provide: MessageRepository,

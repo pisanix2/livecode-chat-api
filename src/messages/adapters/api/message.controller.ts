@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Logger, Param, Post } from '@nestjs/common';
-import MessageService from 'src/messages/domain/ports/message.service';
+import { MessageService } from 'src/messages/domain/ports/message.service';
 import { MessageCommand } from './message.command';
 
 @Controller({

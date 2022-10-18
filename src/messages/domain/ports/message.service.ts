@@ -2,14 +2,17 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Message } from '../model/message.model';
 import { MessageRepository } from './message.repository';
 import { ContactRepository } from './contact.repository';
+import { SocketService } from './socket.service';
 
 @Injectable()
-export default class MessageService {
+export class MessageService {
   constructor(
     @Inject(MessageRepository)
     private readonly messageRepository: MessageRepository,
     @Inject(ContactRepository)
     private readonly contactRepository: ContactRepository,
+    @Inject(SocketService)
+    private readonly socketService: SocketService,
   ) {}
 
   create(
@@ -22,6 +25,9 @@ export default class MessageService {
 
     const message = new Message(content, origin, destination);
     this.messageRepository.create(message);
+
+    this.socketService.notifyNewMessage(destination.id, content);
+
     return message;
   }
 
