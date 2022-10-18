@@ -15,9 +15,11 @@ export class MessageInMemory implements MessageRepository {
     return this.messages;
   }
 
-  findByUser(user: string): Message[] {
+  findByUser(userLoginId: string, userContactId: string): Message[] {
     return this.messages.filter(
-      (el) => el.origin.id === user || el.destination.id === user,
+      (el) =>
+        (el.origin.id === userLoginId && el.destination.id === userContactId) ||
+        (el.origin.id === userContactId && el.destination.id === userLoginId),
     );
     // .sort((a, b) => new Date(a.createdAt) - new Date(b.createAt));
   }

@@ -12,7 +12,7 @@
       "cwd": "${workspaceRoot}",
       "console": "integratedTerminal",
       "protocol": "inspector",
-      "runtimeVersion": "14.16.1",
+      "runtimeVersion": "16.14.2",
     }
   ]
 }

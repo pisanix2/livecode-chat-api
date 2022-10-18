@@ -16,9 +16,12 @@ export class MessageController {
     return this.messageService.findAll();
   }
 
-  @Get('byUser/:userId')
+  @Get(':userLoginId/:userContactId')
   findByUser(@Param() params): any[] {
-    return this.messageService.findByUser(params.userId);
+    return this.messageService.findByUser(
+      params.userLoginId,
+      params.userContactId,
+    );
   }
 
   @Post()

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Logger, Post } from '@nestjs/common';
+import { Body, Controller, Get, Logger, Post, Param } from '@nestjs/common';
 import { ContactService } from 'src/messages/domain/ports/contact.service';
 import { ContactCommand } from './contact.command';
 
@@ -14,6 +14,11 @@ export class ContactController {
   @Get()
   findAll(): any[] {
     return this.contactService.findAll();
+  }
+
+  @Get(':userLoginId')
+  findByUser(@Param() params): any[] {
+    return this.contactService.findByUser(params.userLoginId);
   }
 
   @Post()

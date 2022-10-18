@@ -29,7 +29,7 @@ export default class MessageService {
     return this.messageRepository.findAll();
   }
 
-  findByUser(user: string): Message[] {
-    return this.messageRepository.findByUser(user);
+  findByUser(userLoginId: string, userContactId: string): Message[] {
+    return this.messageRepository.findByUser(userLoginId, userContactId);
   }
 }
