@@ -21,6 +21,5 @@ export class MessageInMemory implements MessageRepository {
         (el.origin.id === userLoginId && el.destination.id === userContactId) ||
         (el.origin.id === userContactId && el.destination.id === userLoginId),
     );
-    // .sort((a, b) => new Date(a.createdAt) - new Date(b.createAt));
   }
 }
