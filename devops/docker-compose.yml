@@ -5,12 +5,12 @@
 
 version: '3'
 services:
-  api:
+  backend:
     build:
       context: ../
       dockerfile: devops/dockerfile
     restart: always
     ports:
-      - 3000:3000
+      - 3001:3001
     environment:
-      PORT: 3000
+      PORT: 3001
