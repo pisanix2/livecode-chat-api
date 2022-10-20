@@ -1,0 +1,16 @@
+# to run compose
+## docker-compose -f devops/docker-compose.yml up -d
+# to stop compose
+## docker-compose -f devops/docker-compose.yml down
+
+version: '3'
+services:
+  api:
+    build:
+      context: ../
+      dockerfile: devops/dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
